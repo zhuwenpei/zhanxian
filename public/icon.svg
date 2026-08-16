@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Shield -->
+  <rect width="512" height="512" rx="128" fill="url(#bg)"/>
+  <rect width="480" height="480" x="16" y="16" rx="112" fill="none" stroke="url(#accent)" stroke-width="8" stroke-opacity="0.3"/>
+  
+  <!-- Outer Tactical Rings -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="url(#accent)" stroke-width="4" stroke-dasharray="16 8"/>
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#6366f1" stroke-width="2" stroke-opacity="0.5"/>
+  <circle cx="256" cy="256" r="80" fill="none" stroke="url(#glow)" stroke-width="3" stroke-opacity="0.8"/>
+  
+  <!-- Crosshairs -->
+  <line x1="256" y1="40" x2="256" y2="472" stroke="url(#accent)" stroke-width="4" stroke-opacity="0.4" stroke-dasharray="8 8"/>
+  <line x1="40" y1="256" x2="472" y2="256" stroke="url(#accent)" stroke-width="4" stroke-opacity="0.4" stroke-dasharray="8 8"/>
+  
+  <!-- Star / Compass Point -->
+  <path d="M 256 120 L 280 230 L 392 256 L 280 282 L 256 392 L 232 282 L 120 256 L 232 230 Z" fill="url(#glow)" filter="drop-shadow(0px 0px 8px rgba(245,158,11,0.5))"/>
+  <path d="M 256 120 L 256 256 L 232 230 Z" fill="#ffffff" fill-opacity="0.3"/>
+  <path d="M 256 392 L 256 256 L 280 282 Z" fill="#ffffff" fill-opacity="0.3"/>
+  <path d="M 392 256 L 256 256 L 280 230 Z" fill="#ffffff" fill-opacity="0.3"/>
+  <path d="M 120 256 L 256 256 L 232 282 Z" fill="#ffffff" fill-opacity="0.3"/>
+  
+  <!-- Center Target Point -->
+  <circle cx="256" cy="256" r="12" fill="#ffffff" stroke="#1e1b4b" stroke-width="3"/>
+</svg>

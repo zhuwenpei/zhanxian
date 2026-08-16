@@ -1,0 +1,35 @@
+
+  const moveUnitsToBorder = (sideState: SideState, borderCells: string[]) => {
+    if (borderCells.length === 0) {
+      sideState.units = [];
+      return;
+    }
+    // Halve unit count (take every 2nd border cell)
+    const sampledCells = borderCells.filter((_, idx) => idx % 2 === 0);
+    if (sampledCells.length === 0) sampledCells.push(borderCells[0]);
+
+    const count = sampledCells.length;
+    const baseStrengthPerUnit = Math.max(100, Math.round(sideState.activeTroops / count));
+    sideState.units = sampledCells.map((cellId, index) => {
+      const [lat, lng] = getCachedLatLng(cellId);
+      const existing = sideState.units[index];
+      
+      let strength = baseStrengthPerUnit;
+      // If land-adjacent and is a landing cell, landing forces operate at half strength/combat effectiveness
+      if (isLandAdjacent && cells[cellId]?.isLandingCell) {
+        strength = Math.max(100, Math.round(baseStrengthPerUnit * 0.5));
+      }
+
+      return {
+        id: existing ? existing.id : `${sideState.id}-${index}`,
+        side: sideState.id,
+        strength: strength,
+        maxStrength: strength,
+        cellId,
+        latitude: lat,
+        longitude: lng,
+        status: existing?.status === 'isolated' ? 'isolated' : 'active',
+        supplyConnected: existing ? existing.supplyConnected : true,
+        daysIsolated: existing ? existing.daysIsolated : 0,
+        experience: existing ? existing.experience : 1.0,
+      };
